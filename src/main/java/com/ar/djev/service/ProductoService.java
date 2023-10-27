@@ -1,6 +1,8 @@
 package com.ar.djev.service;
 
 import com.ar.djev.dto.ProductoDto;
+import com.ar.djev.dto.response.ResponseDto;
+import com.ar.djev.entity.Producto;
 import com.ar.djev.repository.IProductoRepository;
 import com.ar.djev.repository.ProductoRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -22,4 +24,17 @@ public class ProductoService implements IProductoService {
                 .map(producto -> mapper.convertValue(producto, ProductoDto.class))
                 .toList();
     }
+
+    @Override
+    public ResponseDto guardarProducto(ProductoDto producto) {
+        ObjectMapper mapper = new ObjectMapper();
+        Producto productoEntity = mapper.convertValue(producto, Producto.class);
+        Producto respuestaReso = repository.guardarProducto(productoEntity);
+        if (respuestaReso == null) {
+            return  new ResponseDto("No se pudo guardar");
+        }
+        return new ResponseDto("Se guardo correctamente");
+    }
+
+
 }

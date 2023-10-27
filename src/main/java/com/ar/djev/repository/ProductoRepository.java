@@ -1,5 +1,7 @@
 package com.ar.djev.repository;
 
+import com.ar.djev.dto.ProductoDto;
+import com.ar.djev.dto.response.ResponseDto;
 import com.ar.djev.entity.Producto;
 import org.springframework.stereotype.Repository;
 
@@ -14,4 +16,12 @@ public class ProductoRepository implements IProductoRepository {
     public List<Producto> buscarProducto() {
         return dataBase;
     }
+
+    @Override
+    public Producto guardarProducto(Producto producto) {
+        dataBase.add(producto);
+        return  producto;
+    }
+
+
 }
