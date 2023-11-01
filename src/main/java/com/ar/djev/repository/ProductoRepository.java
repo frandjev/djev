@@ -1,7 +1,6 @@
 package com.ar.djev.repository;
 
-import com.ar.djev.dto.ProductoDto;
-import com.ar.djev.dto.response.ResponseDto;
+
 import com.ar.djev.entity.Producto;
 import org.springframework.stereotype.Repository;
 
